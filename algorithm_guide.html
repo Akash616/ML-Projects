@@ -1,0 +1,185 @@
+
+<style>
+.section { margin: 0 0 28px 0; }
+.section-title { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 10px 0; padding-left: 4px; }
+.cards { display: flex; flex-wrap: wrap; gap: 10px; }
+.card { border-radius: var(--border-radius-lg); padding: 14px 16px; cursor: pointer; border: 1px solid var(--color-border-tertiary); background: var(--color-background-secondary); flex: 1 1 160px; min-width: 140px; transition: border-color 0.15s; }
+.card:hover { border-color: var(--color-border-primary); }
+.card-label { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 4px 0; }
+.card-sub { font-size: 12px; color: var(--color-text-secondary); margin: 0 0 8px 0; line-height: 1.4; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+.tag-purple { background: #EEEDFE; color: #3C3489; }
+.tag-teal   { background: #E1F5EE; color: #085041; }
+.tag-amber  { background: #FAEEDA; color: #633806; }
+.tag-coral  { background: #FAECE7; color: #712B13; }
+.tag-gray   { background: #F1EFE8; color: #444441; }
+@media (prefers-color-scheme: dark) {
+  .tag-purple { background: #3C3489; color: #CECBF6; }
+  .tag-teal   { background: #085041; color: #9FE1CB; }
+  .tag-amber  { background: #633806; color: #FAC775; }
+  .tag-coral  { background: #712B13; color: #F5C4B3; }
+  .tag-gray   { background: #444441; color: #D3D1C7; }
+}
+.divider { height: 1px; background: var(--color-border-tertiary); margin: 0 0 24px 0; }
+.cat-header { display: flex; align-items: center; gap: 10px; margin: 0 0 12px 0; }
+.cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.cat-name { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+</style>
+
+<div style="padding: 4px 0 0 0;">
+
+<div class="section">
+  <div class="cat-header">
+    <div class="cat-dot" style="background:#534AB7"></div>
+    <div class="cat-name">Classification — output is a category</div>
+  </div>
+  <div class="cards">
+    <div class="card" onclick="sendPrompt('When should I use Logistic Regression?')">
+      <div class="card-label">Logistic Regression</div>
+      <div class="card-sub">Binary yes/no, simple data</div>
+      <div class="tags"><span class="tag tag-purple">Binary</span><span class="tag tag-gray">Small data</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use SVM?')">
+      <div class="card-label">SVM</div>
+      <div class="card-sub">Clear boundary between classes</div>
+      <div class="tags"><span class="tag tag-purple">Binary</span><span class="tag tag-gray">Small–Medium</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use KNN?')">
+      <div class="card-label">KNN</div>
+      <div class="card-sub">Simple patterns, multi-class</div>
+      <div class="tags"><span class="tag tag-purple">Multi-class</span><span class="tag tag-gray">Small data</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use Naive Bayes?')">
+      <div class="card-label">Naive Bayes</div>
+      <div class="card-sub">Text classification, spam</div>
+      <div class="tags"><span class="tag tag-purple">Multi-class</span><span class="tag tag-gray">Any size</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use Random Forest for classification?')">
+      <div class="card-label">Random Forest</div>
+      <div class="card-sub">Complex data, high accuracy</div>
+      <div class="tags"><span class="tag tag-purple">Binary/Multi</span><span class="tag tag-gray">Medium–Large</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use XGBoost?')">
+      <div class="card-label">XGBoost</div>
+      <div class="card-sub">Imbalanced data, competitions</div>
+      <div class="tags"><span class="tag tag-purple">Binary/Multi</span><span class="tag tag-gray">Medium–Large</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="cat-header">
+    <div class="cat-dot" style="background:#0F6E56"></div>
+    <div class="cat-name">Regression — output is a number</div>
+  </div>
+  <div class="cards">
+    <div class="card" onclick="sendPrompt('When should I use Linear Regression?')">
+      <div class="card-label">Linear Regression</div>
+      <div class="card-sub">Simple, 1–2 features</div>
+      <div class="tags"><span class="tag tag-teal">Regression</span><span class="tag tag-gray">Any size</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use Multiple Linear Regression?')">
+      <div class="card-label">Multiple Lin. Reg.</div>
+      <div class="card-sub">Many input features</div>
+      <div class="tags"><span class="tag tag-teal">Regression</span><span class="tag tag-gray">Any size</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use Polynomial Regression?')">
+      <div class="card-label">Polynomial Reg.</div>
+      <div class="card-sub">Curved, non-linear data</div>
+      <div class="tags"><span class="tag tag-teal">Regression</span><span class="tag tag-gray">Small–Medium</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use Random Forest for regression?')">
+      <div class="card-label">Random Forest</div>
+      <div class="card-sub">Complex patterns</div>
+      <div class="tags"><span class="tag tag-teal">Regression</span><span class="tag tag-gray">Medium–Large</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use LSTM or ARIMA for time series?')">
+      <div class="card-label">LSTM / ARIMA</div>
+      <div class="card-sub">Stock prices, weather</div>
+      <div class="tags"><span class="tag tag-teal">Time series</span><span class="tag tag-gray">Large</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="cat-header">
+    <div class="cat-dot" style="background:#854F0B"></div>
+    <div class="cat-name">Clustering — find groups, no labels</div>
+  </div>
+  <div class="cards">
+    <div class="card" onclick="sendPrompt('When should I use K-Means clustering?')">
+      <div class="card-label">K-Means</div>
+      <div class="card-sub">Know number of groups</div>
+      <div class="tags"><span class="tag tag-amber">Clustering</span><span class="tag tag-gray">Any size</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use DBSCAN?')">
+      <div class="card-label">DBSCAN</div>
+      <div class="card-sub">Unknown groups, odd shapes</div>
+      <div class="tags"><span class="tag tag-amber">Clustering</span><span class="tag tag-gray">Medium</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use Hierarchical clustering?')">
+      <div class="card-label">Hierarchical</div>
+      <div class="card-sub">Tree-like group structure</div>
+      <div class="tags"><span class="tag tag-amber">Clustering</span><span class="tag tag-gray">Small–Medium</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="cat-header">
+    <div class="cat-dot" style="background:#993C1D"></div>
+    <div class="cat-name">Deep Learning — images, text, audio</div>
+  </div>
+  <div class="cards">
+    <div class="card" onclick="sendPrompt('When should I use CNN in deep learning?')">
+      <div class="card-label">CNN</div>
+      <div class="card-sub">Image and video classification</div>
+      <div class="tags"><span class="tag tag-coral">Deep Learning</span><span class="tag tag-gray">Large data</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use RNN or LSTM?')">
+      <div class="card-label">RNN / LSTM</div>
+      <div class="card-sub">Text, speech, time series</div>
+      <div class="tags"><span class="tag tag-coral">Deep Learning</span><span class="tag tag-gray">Large data</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('When should I use BERT or Transformers?')">
+      <div class="card-label">BERT / Transformers</div>
+      <div class="card-sub">NLP, chatbots, translation</div>
+      <div class="tags"><span class="tag tag-coral">Deep Learning</span><span class="tag tag-gray">Very large</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="cat-header">
+    <div class="cat-dot" style="background:#5F5E5A"></div>
+    <div class="cat-name">Recommendation — suggest items</div>
+  </div>
+  <div class="cards">
+    <div class="card" onclick="sendPrompt('What is Collaborative Filtering?')">
+      <div class="card-label">Collaborative Filtering</div>
+      <div class="card-sub">Based on user behavior</div>
+      <div class="tags"><span class="tag tag-gray">Recommendation</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('What is Content-Based Filtering?')">
+      <div class="card-label">Content-Based Filtering</div>
+      <div class="card-sub">Based on item similarity</div>
+      <div class="tags"><span class="tag tag-gray">Recommendation</span></div>
+    </div>
+    <div class="card" onclick="sendPrompt('What is a Hybrid recommendation system like Netflix?')">
+      <div class="card-label">Hybrid (Netflix/Amazon)</div>
+      <div class="card-sub">Both combined together</div>
+      <div class="tags"><span class="tag tag-gray">Recommendation</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
